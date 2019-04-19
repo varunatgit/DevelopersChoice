@@ -154,6 +154,4 @@ function isLoggedIn(req,res,next){
     res.redirect("/login");
 }
 
-app.listen(3000, "localhost" , function() {
-    console.log("Server started");
-});
+app.listen(process.env.PORT );
