@@ -1,0 +1,61 @@
+<% include partials/header %>
+
+<style>
+    p{
+        color: aqua;
+        font-size: 25px;
+        padding-top: 50px;
+    }
+</style>
+
+<div class="container">
+    <p style="text-align: center">Add a new project</p>
+    <form action="/desserts" method="POST">
+        <fieldset>
+        <p>Name of the project</p>
+        <input type="text" name="name" placeholder="Name" required>
+        <br>
+
+        <p>Technology Used</p>
+
+
+        <select name="technology"  required>
+            <option value="Web Application">Front-end</option>
+            <option value="Data Science">Back-end</option>
+            <option value="Data Science">MEAN Stack</option>
+            <option value="Data Science">Full Stack</option>
+            <option value="AR/VR">AR/VR</option>
+            <option value="Arduino">Arduino</option>
+            <option value="Data Science">Data Science</option>
+        </select>
+        <br>
+        <p>Description</p>
+        <input type="text" name="description" placeholder="Info about project" required>
+        <br>
+
+        <p>Select Level</p>
+        <select name="level">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+        </select>
+          <br>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </fieldset>
+    </form>
+    <br>
+    <a href="/desserts">Back</a>
+
+</div>
+
+
+<% include partials/footer %>

@@ -1,0 +1,105 @@
+<% include partials/header %>
+
+
+<style>
+
+    .content{
+        float: right;
+    }
+
+    .navbar-nav {
+      flex-direction: row;
+    }
+
+    .nav-link {
+      padding-right: .5rem !important;
+      padding-left: .5rem !important;
+    }
+
+    .ml-auto .dropdown-menu {
+      left: auto !important;
+      right: 0px;
+    }
+
+    .nav-logo{
+        width: 20%;
+        height: 100%;
+        margin-bottom: 0%;
+        margin-right: 0%;
+        margin-left: 0%;
+        padding-right: 0%;
+    }
+
+    h3{
+        color: floralwhite;
+    }
+
+    .logo{
+        margin-right: 10%;
+    }
+
+</style>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar w-100 order-1 order-md-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="/desserts/userdata" class="nav-link" >Add Skills</a>
+                </li>
+
+                <li class="nav-item" >
+                  <a href="/logout" class="nav-link">Logout</a>
+
+
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto"  href="/">ALL PROJECTS</a>
+        </div>
+        <div class="navbar w-100 order-3">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                        <a class="nav-link active" href="/desserts/new">Add a new project</a>
+
+                </li>
+            </ul>
+        </div>
+</nav>
+
+<div class="container">
+    <header class="jumbotron">
+        <img style="width: 35%" src="http://www.illuminationworksllc.com/wp-content/uploads/2017/04/ProjectManagement-1.jpg" />
+        <div class="content">
+                <h1>Developer's Choice</h1>
+                <p>Projects according to your skills.</p>
+
+        </div>
+        <br>
+        <br>
+        <P>
+                <a class="btn btn-primary" href="https://www.gramercytavern.com/" target="_blank">Recommend Projects</a>
+        </P>
+
+    </header>
+    <br>
+    <hr>
+    <br>
+    <div class="row" style="display:flex; flex-wrap: wrap;">
+        <% desserts.forEach(function(dessert){ %>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= dessert.image %>">
+                </div>
+                <div class="caption">
+                    <h3><%= dessert.name %></h3>
+                    <button><a href="/desserts/<%=dessert._id%>">View</a></button>
+                </div>
+
+            </div>
+
+        <% }); %>
+    </div>
+
+    <hr>
+    <% include partials/footer %>
+</div>
