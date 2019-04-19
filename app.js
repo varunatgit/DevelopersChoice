@@ -5,7 +5,7 @@ var express=require("express"),
     LocalStratergy=require("passport-local"),
     passportLocalMongoose=require("passport-local-mongoose");
 
-mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true",{ useNewUrlParser:
+mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts",{ useNewUrlParser:
 true });
 
 var userSchema=new mongoose.Schema({
