@@ -110,7 +110,7 @@ app.get("/desserts",function(req,res) {
 
 
 
-app.post("/desserts",isLoggedIn, function(req, res){
+app.post("/desserts", function(req, res){
     //res.send("It was the post route.")
 
 
@@ -154,4 +154,4 @@ function isLoggedIn(req,res,next){
     res.redirect("/login");
 }
 
-app.listen(process.env.PORT );
+app.listen(process.env.PORT ||5000 );
