@@ -7,13 +7,24 @@ var express=require("express"),
 
 // mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1",{ useNewUrlParser:
 // true });
+//
+// var uri = 'mongodb+srv://varun:varun12345@' +
+//   'cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1' +
+//   'ssl=true&replicaSet=MY_REPLICASET_NAME-shard-0&authSource=MY_ADMIN_DATABASE';
+//
+// mongoose.connect(uri);
+// var db = mongoose.connection;
 
-var uri = 'mongodb+srv://varun:varun12345@' +
-  'cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1' +
-  'ssl=true&replicaSet=MY_REPLICASET_NAME-shard-0&authSource=MY_ADMIN_DATABASE';
 
-mongoose.connect(uri);
-var db = mongoose.connection;
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 
 var userSchema=new mongoose.Schema({
     username: String,
