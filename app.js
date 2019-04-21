@@ -5,8 +5,15 @@ var express=require("express"),
     LocalStratergy=require("passport-local"),
     passportLocalMongoose=require("passport-local-mongoose");
 
-mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1",{ useNewUrlParser:
-true });
+// mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1",{ useNewUrlParser:
+// true });
+
+var uri = 'mongodb+srv://varun:varun12345@' +
+  'cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1' +
+  'ssl=true&replicaSet=MY_REPLICASET_NAME-shard-0&authSource=MY_ADMIN_DATABASE';
+
+mongoose.connect(uri);
+var db = mongoose.connection;
 
 var userSchema=new mongoose.Schema({
     username: String,
@@ -29,11 +36,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(require("express-session")({
-//     secret:"hello World",
-//     resave: false,
-//     saveUninitialized: false
-// }));
+app.use(require("express-session")({
+    secret:"hello World",
+    resave: false,
+    saveUninitialized: false
+}));
 
 passport.use(new LocalStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -147,11 +154,11 @@ app.get("/desserts/:id", function(req,res){
   })
 });
 
-// function isLoggedIn(req,res,next){
-//     if(req.isAuthenticated()){
-//         return next();
-//     }
-//     res.redirect("/login");
-// }
+function isLoggedIn(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 app.listen(process.env.PORT ||5000 );
