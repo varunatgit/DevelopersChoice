@@ -174,4 +174,4 @@ function isLoggedIn(req,res,next){
     res.redirect("/login");
 }
 
-app.listen(process.env.PORT ||5000 );
+app.listen(process.env.MONGOLAB_URI ||5000 );
