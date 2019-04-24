@@ -5,9 +5,11 @@ var express=require("express"),
     LocalStratergy=require("passport-local"),
     passportLocalMongoose=require("passport-local-mongoose");
 
-// mongoose.connect("mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1",{ useNewUrlParser:
-// true });
-//
+
+heroku config:set MONGOLAB_URI = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1";
+
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/TodoApp');
+
 // var uri = 'mongodb+srv://varun:varun12345@' +
 //   'cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1' +
 //   'ssl=true&replicaSet=MY_REPLICASET_NAME-shard-0&authSource=MY_ADMIN_DATABASE';
@@ -16,14 +18,14 @@ var express=require("express"),
 // var db = mongoose.connection;
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 
 var userSchema=new mongoose.Schema({
