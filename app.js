@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/TodoApp'
 // const uri = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true";
 // const client = new MongoClient(uri, { useNewUrlParser: true });
 // client.connect(err => {
-//   const collection = client.db("test").collection("devices");
+//   const collection = client.db("test")dfsdfdsf.collection("devices");
 //   // perform actions on the collection object
 //   client.close();
 // });
