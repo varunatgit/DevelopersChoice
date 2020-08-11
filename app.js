@@ -1,4 +1,5 @@
 var express=require("express"),
+    app=express(),
     bodyParser=require("body-parser"),
     mongoose=require("mongoose"),
     passport=require("passport"),
@@ -6,9 +7,15 @@ var express=require("express"),
     passportLocalMongoose=require("passport-local-mongoose");
 
 
-heroku config:set MONGOLAB_URI = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1";
+// heroku config:set MONGOLAB_URI = "mongodb+srv://varun:varun12345@cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1";
+//
+// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/TodoApp');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/TodoApp');
+
+mongoose.connect("mongodb://localhost/desserts1", { useNewUrlParser: true });
+app.use(bodyParser.urlencoded({extended: true}));
+app.use( express.static( "public" ) );
+app.set("view engine","ejs");
 
 // var uri = 'mongodb+srv://varun:varun12345@' +
 //   'cluster0-65fvw.mongodb.net/test?retryWrites=true/desserts1' +
@@ -174,4 +181,10 @@ function isLoggedIn(req,res,next){
     res.redirect("/login");
 }
 
-app.listen(process.env.MONGOLAB_URI ||5000 );
+app.listen(3000,function()
+{
+  console.log("Server has started");
+}
+);
+
+module.exports=app;
